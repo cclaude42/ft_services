@@ -12,7 +12,7 @@ ADD https://wordpress.org/latest.tar.gz .
 # Install Wordpress
 RUN mkdir -p /www && \
 	tar -xvf latest.tar.gz && \
-	mv wordpress/ www/ && \
+	mv wordpress/* www/ && \
 	rm -f latest.tar.gz
 
 # Copy files
