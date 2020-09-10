@@ -1,6 +1,7 @@
 = Dockerfile =
 
 Nothing special except for optimization
+Need different setups to find quickest & lightest image build
 
 
 = setup.sh =
