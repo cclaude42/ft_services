@@ -11,10 +11,9 @@ RUN apk update && \
 ADD https://wordpress.org/latest.tar.gz .
 
 # Install Wordpress
-RUN mkdir -p /www && \
-	tar -xvf latest.tar.gz && \
-	mv wordpress/* www/ && \
-	mv wp-config.php /www/ && \
+RUN tar -xvf latest.tar.gz && \
+	mv wordpress www && \
+	mv wp-config.php wordpress/ && \
 	rm -f latest.tar.gz
 
 EXPOSE 5050

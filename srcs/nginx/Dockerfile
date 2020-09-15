@@ -1,9 +1,17 @@
 FROM alpine:latest
 
-# COPY nginx.conf sshd_config index.html setup.sh ./
+COPY nginx.conf sshd_config index.html setup.sh ./
 
-# Install nginx, SSH and SSL
+# Install nginx and dependencies
 RUN apk update && \
 	apk add --no-cache nginx openssl openssh
 
-CMD yes
+# Setup nginx
+# RUN mkdir
+
+# Setup SSL and SSH
+RUN
+
+EXPOSE 22 80 443
+
+CMD ./setup.sh
