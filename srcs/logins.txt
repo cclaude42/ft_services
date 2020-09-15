@@ -1,0 +1,16 @@
+= Wordpress =
+
+MySQL database name : wordpress
+
+MySQL database username : wordpress_admin
+
+MySQL database password : 1010
+
+MySQL hostname : mysql
+
+
+= nginx =
+
+Alpine user username : nginx_user
+
+Alpine user password : 1011
