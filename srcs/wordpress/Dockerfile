@@ -1,5 +1,6 @@
-# Base OS
 FROM alpine:latest
+
+COPY wp-config.php setup.sh ./
 
 # Install PHP
 RUN apk update && \
@@ -13,13 +14,9 @@ ADD https://wordpress.org/latest.tar.gz .
 RUN mkdir -p /www && \
 	tar -xvf latest.tar.gz && \
 	mv wordpress/* www/ && \
+	mv wp-config.php /www/ && \
 	rm -f latest.tar.gz
-
-# Copy files
-COPY ./wp-config.php /www/wp-config.php
-COPY ./setup.sh .
 
 EXPOSE 5050
 
-# Run script
 CMD ./setup.sh
