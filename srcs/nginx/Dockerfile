@@ -10,7 +10,7 @@ RUN apk update && \
 # RUN mkdir
 
 # Setup SSL and SSH
-RUN
+# RUN
 
 EXPOSE 22 80 443
 
