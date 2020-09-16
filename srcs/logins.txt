@@ -14,3 +14,7 @@ MySQL hostname : mysql
 Alpine user username : nginx_user
 
 Alpine user password : 1011
+
+Certificate location : etc/ssl/certs/services.crt
+
+Key location : etc/ssl/private/services.key
