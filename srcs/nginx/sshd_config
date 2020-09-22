@@ -1,3 +1,0 @@
-# SSHD configuration file
-
-Subsystem	sftp	/usr/lib/ssh/sftp-server

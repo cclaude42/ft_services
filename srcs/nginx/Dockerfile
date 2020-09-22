@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-COPY nginx.conf index.html sshd_config setup.sh ./
+COPY nginx.conf index.html setup.sh ./
 
 # Install nginx and dependencies
 RUN apk update && \
@@ -13,13 +13,12 @@ RUN mkdir -p run/nginx && \
 	mv index.html www/
 
 # Setup SSH
-RUN mv sshd_config etc/ssh/ && \
+RUN ssh-keygen -A && \
 	adduser -D ssh_user && \
 	echo "ssh_user:1011" | chpasswd
 
-# Generate SSH and SSL keys
-RUN ssh-keygen -A && \
-	openssl req -new -newkey rsa:2048 -nodes -days 365 -x509 \
+# Setup SSL
+RUN openssl req -new -newkey rsa:2048 -nodes -days 365 -x509 \
 	-subj "/C=FR/ST=IDF/L=Paris/O=42/OU=Federation/CN=localhost" \
 	-keyout etc/ssl/private/services.key -out etc/ssl/certs/services.crt
 
