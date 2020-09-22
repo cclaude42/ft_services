@@ -14,12 +14,12 @@ RUN mkdir -p run/nginx && \
 
 # Setup SSH
 RUN mv sshd_config etc/ssh/ && \
-	ssh-keygen -A && \
 	adduser -D ssh_user && \
 	echo "ssh_user:1011" | chpasswd
 
-# Setup SSL
-RUN openssl req -new -newkey rsa:2048 -nodes -days 365 -x509 \
+# Generate SSH and SSL keys
+RUN ssh-keygen -A && \
+	openssl req -new -newkey rsa:2048 -nodes -days 365 -x509 \
 	-subj "/C=FR/ST=IDF/L=Paris/O=42/OU=Federation/CN=localhost" \
 	-keyout etc/ssl/private/services.key -out etc/ssl/certs/services.crt
 
