@@ -14,6 +14,7 @@ RUN mkdir -p run/nginx && \
 
 # Setup SSH
 RUN mv sshd_config etc/ssh/ && \
+	ssh-keygen -A && \
 	adduser -D ssh_user && \
 	echo "ssh_user:1011" | chpasswd
 
