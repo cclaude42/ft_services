@@ -11,9 +11,9 @@ MySQL hostname : mysql
 
 = nginx =
 
-Alpine user username : nginx_user
+SSH username : ssh_user
 
-Alpine user password : 1011
+SSH password : 1011
 
 Certificate location : etc/ssl/certs/services.crt
 
