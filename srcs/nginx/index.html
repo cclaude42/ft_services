@@ -5,7 +5,7 @@
 
   <meta charset="UTF-8">
 
-  <title>FT_SERVICES</title>
+  <title>ft_services</title>
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,92 +14,103 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
 
   <style type="text/css">
-  @import url('https://fonts.googleapis.com/css?family=Nunito+Sans');
+  @import url("https://fonts.googleapis.com/css?family=Nunito+Sans");
   :root {
     --blue: #0e0620;
-    --white: #fff;
-    --green: #2ccf6d;
+    --white: #ffffaa;
+    --green: #1050b0;
   }
+
   html,
   body {
     height: 100%;
   }
+
   body {
+    display: -webkit-box;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family:"Nunito Sans";
+    -webkit-box-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+            justify-content: center;
+    font-family: "Nunito Sans";
     color: var(--blue);
     font-size: 1em;
+    background-color: #ffffaa;
   }
+
   button {
-    font-family:"Nunito Sans";
+    font-family: "Nunito Sans";
   }
+
   ul {
     list-style-type: none;
-    padding-inline-start: 35px;
+    -webkit-padding-start: 35px;
+            padding-inline-start: 35px;
   }
+
   svg {
     width: 100%;
     visibility: hidden;
   }
+
   h1 {
     font-size: 7.5em;
     margin: 15px 0px;
-    font-weight:bold;
+    font-weight: bold;
   }
+
   h2 {
-    font-weight:bold;
+    font-weight: bold;
   }
+
   .hamburger-menu {
     position: absolute;
     top: 0;
     left: 0;
     padding: 35px;
     z-index: 2;
-
-    & button {
-      position: relative;
-      width: 30px;
-      height: 22px;
-      border: none;
-      background: none;
-      padding: 0;
-      cursor: pointer;
-
-      & span {
-        position: absolute;
-        height: 3px;
-        background: #000;
-        width: 100%;
-        left: 0px;
-        top: 0px;
-        transition: 0.1s ease-in;
-        &:nth-child(2) {
-          top: 9px;
-        }
-        &:nth-child(3) {
-          top: 18px;
-        }
-      }
-    }
-    & [data-state="open"] {
-      & span {
-        &:first-child {
-          transform: rotate(45deg);
-          top: 10px;
-        }
-        &:nth-child(2) {
-          width: 0%;
-          opacity:0;
-        }
-        &:nth-child(3) {
-          transform: rotate(-45deg);
-          top: 10px;
-        }
-      }
-    }
   }
+  .hamburger-menu button {
+    position: relative;
+    width: 30px;
+    height: 22px;
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+  }
+  .hamburger-menu button span {
+    position: absolute;
+    height: 3px;
+    background: #000;
+    width: 100%;
+    left: 0px;
+    top: 0px;
+    -webkit-transition: 0.1s ease-in;
+    transition: 0.1s ease-in;
+  }
+  .hamburger-menu button span:nth-child(2) {
+    top: 9px;
+  }
+  .hamburger-menu button span:nth-child(3) {
+    top: 18px;
+  }
+  .hamburger-menu [data-state="open"] span:first-child {
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+    top: 10px;
+  }
+  .hamburger-menu [data-state="open"] span:nth-child(2) {
+    width: 0%;
+    opacity: 0;
+  }
+  .hamburger-menu [data-state="open"] span:nth-child(3) {
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+    top: 10px;
+  }
+
   nav {
     position: absolute;
     height: 100%;
@@ -110,38 +121,64 @@
     width: 300px;
     z-index: 1;
     padding-top: 80px;
-    transform: translateX(-100%);
-    transition: 0.24s cubic-bezier(.52,.01,.8,1);
-    & li {
-      transform: translateX(-5px);
-      transition: 0.16s cubic-bezier(0.44, 0.09, 0.46, 0.84);
-      opacity: 0;
-    }
-    & a {
-      display: block;
-      font-size: 1.75em;
-      font-weight: bold;
-      text-decoration: none;
-      color: inherit;
-      transition: 0.24s ease-in-out;
-      &:hover {
-        text-decoration: none;
-        color: var(--white);
-      }
-    }
-    &[data-state="open"] {
-      transform: translateX(0%);
-      & ul {
-        @for $i from 1 through 4 {
-          li:nth-child(#{$i}) {
-            transition-delay: 0.16s * $i;
-            transform: translateX(0px);
-            opacity: 1;
-          }
-        }
-      }
-    }
+    -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+    -webkit-transition: 0.24s cubic-bezier(0.52, 0.01, 0.8, 1);
+    transition: 0.24s cubic-bezier(0.52, 0.01, 0.8, 1);
   }
+  nav li {
+    -webkit-transform: translateX(-5px);
+            transform: translateX(-5px);
+    -webkit-transition: 0.16s cubic-bezier(0.44, 0.09, 0.46, 0.84);
+    transition: 0.16s cubic-bezier(0.44, 0.09, 0.46, 0.84);
+    opacity: 0;
+  }
+  nav a {
+    display: block;
+    font-size: 1.75em;
+    font-weight: bold;
+    text-decoration: none;
+    color: inherit;
+    -webkit-transition: 0.24s ease-in-out;
+    transition: 0.24s ease-in-out;
+  }
+  nav a:hover {
+    text-decoration: none;
+    color: var(--white);
+  }
+  nav[data-state="open"] {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+  nav[data-state="open"] ul li:nth-child(1) {
+    -webkit-transition-delay: 0.16s;
+            transition-delay: 0.16s;
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+    opacity: 1;
+  }
+  nav[data-state="open"] ul li:nth-child(2) {
+    -webkit-transition-delay: 0.32s;
+            transition-delay: 0.32s;
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+    opacity: 1;
+  }
+  nav[data-state="open"] ul li:nth-child(3) {
+    -webkit-transition-delay: 0.48s;
+            transition-delay: 0.48s;
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+    opacity: 1;
+  }
+  nav[data-state="open"] ul li:nth-child(4) {
+    -webkit-transition-delay: 0.64s;
+            transition-delay: 0.64s;
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+    opacity: 1;
+  }
+
   .btn {
     z-index: 1;
     overflow: hidden;
@@ -152,40 +189,45 @@
     cursor: pointer;
     font-size: 1em;
     letter-spacing: 2px;
+    -webkit-transition: 0.2s ease;
     transition: 0.2s ease;
     font-weight: bold;
     margin: 5px 0px;
-    &.green {
-      border: 4px solid var(--green);
-      color: var(--blue);
-      &:before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 0%;
-        height: 100%;
-        background: var(--green);
-        z-index: -1;
-        transition: 0.2s ease;
-      }
-      &:hover {
-        color: var(--white);
-        background: var(--green);
-        transition: 0.2s ease;
-        &:before {
-          width: 100%;
-        }
-      }
-    }
   }
-  @media screen and (max-width:768px) {
+  .btn.green {
+    border: 4px solid var(--green);
+    color: var(--blue);
+  }
+  .btn.green:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0%;
+    height: 100%;
+    background: var(--green);
+    z-index: -1;
+    -webkit-transition: 0.2s ease;
+    transition: 0.2s ease;
+  }
+  .btn.green:hover {
+    color: var(--white);
+    background: var(--green);
+    -webkit-transition: 0.2s ease;
+    transition: 0.2s ease;
+  }
+  .btn.green:hover:before {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 768px) {
     body {
-      display:block;
+      display: block;
     }
+
     .container {
-      margin-top:70px;
-      margin-bottom:70px;
+      margin-top: 70px;
+      margin-bottom: 70px;
     }
   }
   </style>
@@ -204,16 +246,16 @@
   <nav data-state="closed">
     <ul>
       <li>
-        <a href="#">Home</a>
+        <a href=".">nginx</a>
       </li>
       <li>
-        <a href="#">Services</a>
+        <a href="../wordpress">WordPress</a>
       </li>
       <li>
-        <a href="#">About</a>
+        <a href="../phpmyadmin">PHPMyAdmin</a>
       </li>
       <li>
-        <a href="#">Contact</a>
+        <a href="../grafana">Grafana</a>
       </li>
     </ul>
   </nav>
@@ -345,39 +387,39 @@
   			M273.813,410.969c0,0-54.527,39.501-115.34,38.218c-2.28-0.048-4.926-0.241-7.841-0.548
   			c-68.038-7.178-134.288-43.963-167.33-103.87c-0.908-1.646-1.793-3.3-2.654-4.964c-18.395-35.511-37.259-83.385-32.075-118.817" />
 
-                <path id="backpack" fill="#FFFFFF" stroke="#0E0620" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                <path id="backpack" fill="#FFFFAA" stroke="#0E0620" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
   			M338.164,454.689l-64.726-17.353c-11.086-2.972-17.664-14.369-14.692-25.455l15.694-58.537
   			c3.889-14.504,18.799-23.11,33.303-19.221l52.349,14.035c14.504,3.889,23.11,18.799,19.221,33.303l-15.694,58.537
   			C360.647,451.083,349.251,457.661,338.164,454.689z" />
                 <g id="antenna">
-                  <line fill="#FFFFFF" stroke="#0E0620" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="323.396" y1="236.625" x2="295.285" y2="353.753" />
-                  <circle fill="#FFFFFF" stroke="#0E0620" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" cx="323.666" cy="235.617" r="6.375" />
+                  <line fill="#FFFFAA" stroke="#0E0620" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="323.396" y1="236.625" x2="295.285" y2="353.753" />
+                  <circle fill="#FFFFAA" stroke="#0E0620" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" cx="323.666" cy="235.617" r="6.375" />
                 </g>
                 <g id="armR">
 
-                  <path fill="#FFFFFF" stroke="#0E0620" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                  <path fill="#FFFFAA" stroke="#0E0620" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
   				M360.633,363.039c1.352,1.061,4.91,5.056,5.824,6.634l27.874,47.634c3.855,6.649,1.59,15.164-5.059,19.02l0,0
   				c-6.649,3.855-15.164,1.59-19.02-5.059l-5.603-9.663" />
 
-                  <path fill="#FFFFFF" stroke="#0E0620" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                  <path fill="#FFFFAA" stroke="#0E0620" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
   				M388.762,434.677c5.234-3.039,7.731-8.966,6.678-14.594c2.344,1.343,4.383,3.289,5.837,5.793
   				c4.411,7.596,1.829,17.33-5.767,21.741c-7.596,4.411-17.33,1.829-21.741-5.767c-1.754-3.021-2.817-5.818-2.484-9.046
   				C375.625,437.355,383.087,437.973,388.762,434.677z" />
                 </g>
                 <g id="armL">
 
-                  <path fill="#FFFFFF" stroke="#0E0620" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                  <path fill="#FFFFAA" stroke="#0E0620" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
   				M301.301,347.66c-1.702,0.242-5.91,1.627-7.492,2.536l-47.965,27.301c-6.664,3.829-8.963,12.335-5.134,18.999h0
   				c3.829,6.664,12.335,8.963,18.999,5.134l9.685-5.564" />
 
-                  <path fill="#FFFFFF" stroke="#0E0620" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                  <path fill="#FFFFAA" stroke="#0E0620" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
   				M241.978,395.324c-3.012-5.25-2.209-11.631,1.518-15.977c-2.701-0.009-5.44,0.656-7.952,2.096
   				c-7.619,4.371-10.253,14.09-5.883,21.71c4.371,7.619,14.09,10.253,21.709,5.883c3.03-1.738,5.35-3.628,6.676-6.59
   				C252.013,404.214,245.243,401.017,241.978,395.324z" />
                 </g>
                 <g id="body">
 
-                  <path fill="#FFFFFF" stroke="#0E0620" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                  <path fill="#FFFFAA" stroke="#0E0620" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
   				M353.351,365.387c-7.948,1.263-16.249,0.929-24.48-1.278c-8.232-2.207-15.586-6.07-21.836-11.14
   				c-17.004,4.207-31.269,17.289-36.128,35.411l-1.374,5.123c-7.112,26.525,8.617,53.791,35.13,60.899l0,0
   				c26.513,7.108,53.771-8.632,60.883-35.158l1.374-5.123C371.778,395.999,365.971,377.536,353.351,365.387z" />
@@ -387,7 +429,7 @@
                 <g id="legs">
                   <g id="legR">
 
-                    <path fill="#FFFFFF" stroke="#0E0620" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                    <path fill="#FFFFAA" stroke="#0E0620" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
   					M312.957,456.734l-14.315,53.395c-1.896,7.07,2.299,14.338,9.37,16.234l0,0c7.07,1.896,14.338-2.299,16.234-9.37l17.838-66.534
   					C333.451,455.886,323.526,457.387,312.957,456.734z" />
 
@@ -395,7 +437,7 @@
                   </g>
                   <g id="legL">
 
-                    <path fill="#FFFFFF" stroke="#0E0620" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                    <path fill="#FFFFAA" stroke="#0E0620" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
   					M296.315,452.273L282,505.667c-1.896,7.07-9.164,11.265-16.234,9.37l0,0c-7.07-1.896-11.265-9.164-9.37-16.234l17.838-66.534
   					C278.993,441.286,286.836,447.55,296.315,452.273z" />
 
@@ -404,11 +446,11 @@
                 </g>
                 <g id="head">
 
-                  <ellipse transform="matrix(0.259 -0.9659 0.9659 0.259 -51.5445 563.2371)" fill="#FFFFFF" stroke="#0E0620" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" cx="341.295" cy="315.211" rx="61.961" ry="60.305" />
+                  <ellipse transform="matrix(0.259 -0.9659 0.9659 0.259 -51.5445 563.2371)" fill="#FFFFAA" stroke="#0E0620" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" cx="341.295" cy="315.211" rx="61.961" ry="60.305" />
                   <path id="headStripe" fill="none" stroke="#0E0620" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
   				M330.868,261.338c-7.929,1.72-15.381,5.246-21.799,10.246" />
 
-                  <path fill="#FFFFFF" stroke="#0E0620" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
+                  <path fill="#FFFFAA" stroke="#0E0620" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" d="
   				M380.857,346.164c-1.247,4.651-4.668,8.421-9.196,10.06c-9.332,3.377-26.2,7.817-42.301,3.5s-28.485-16.599-34.877-24.192
   				c-3.101-3.684-4.177-8.66-2.93-13.311l7.453-27.798c0.756-2.82,3.181-4.868,6.088-5.13c6.755-0.61,20.546-0.608,41.785,5.087
   				s33.181,12.591,38.725,16.498c2.387,1.682,3.461,4.668,2.705,7.488L380.857,346.164z" />
@@ -422,13 +464,12 @@
           </svg>
         </div>
         <div class="col-md-6 align-self-center">
-          <h1>404</h1>
-          <h2>UH OH! You're lost.</h2>
-          <p>The page you are looking for does not exist.
-            How you got here is a mystery. But you can click the button below
-            to go back to the homepage.
+          <h1>ft_services</h1>
+          <h2>Welcome to hell !</h2>
+          <p>You are currently on the nginx page.
+            You can access other services from the menu on the side.
           </p>
-          <button class="btn green">HOME</button>
+          <a href="https://www.github.com/cclaude42"><button class="btn green">GITHUB</button></a>
         </div>
       </div>
     </div>
