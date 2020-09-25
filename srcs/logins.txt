@@ -18,3 +18,10 @@ SSH password : 1011
 Certificate location : etc/ssl/certs/services.crt
 
 Key location : etc/ssl/private/services.key
+
+
+= MySQL =
+
+MySQL user : mysql_user
+
+MySQL password : 1100
