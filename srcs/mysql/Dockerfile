@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-COPY setup.sh my.cnf mysql.script ./
+COPY setup.sh my.cnf mysql_init ./
 
 # Install MySQL and dependencies
 RUN apk update && \
