@@ -1,18 +1,8 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    setup.sh                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: cclaude <cclaude@student.42.fr>            +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/09/30 12:26:17 by cclaude           #+#    #+#              #
-#    Updated: 2020/09/30 13:33:50 by anonymous        ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+#!/bin/bash
 
 vm_setup()
 {
-
+	echo Setup VM
 }
 
 minikube_setup()
@@ -21,31 +11,31 @@ minikube_setup()
 	minikube start --driver=docker --cpus=2
 	minikube addons enable metrics-server
 	minikube addons enable dashboard
-	eval $(docker-env)
+	eval $(minikube docker-env)
 }
 
 image_build()
 {
-	echo docker build -t {$1}_alpine srcs/$1/.
+	docker build -t ${1}_alpine srcs/$1/.
 }
 
 deployment_build()
 {
-	echo docker apply -f {$1}_deployment srcs/yaml/deployments/$1.yaml
+	kubectl create -f ${1}_deployment srcs/yaml/deployments/$1.yaml
 }
 
 service_build()
 {
-	echo docker apply -f {$1}_service srcs/yaml/services/$1.yaml
+	kubectl create -f ${1}_service srcs/yaml/services/$1.yaml
 }
 
 images()
 {
 	imgs=("nginx" "wordpress" "mysql")
 
-	for img in $imgs[@]
+	for img in "${imgs[@]}"
 	do
-		image_build img
+		image_build $img
 	done
 }
 
@@ -53,9 +43,9 @@ deployments()
 {
 	deps=("nginx" "wordpress" "mysql")
 
-	for dep in $deps[@]
+	for dep in ${deps[@]}
 	do
-		deployment_build dep
+		deployment_build $dep
 	done
 }
 
@@ -63,9 +53,9 @@ services()
 {
 	svcs=("nginx" "wordpress" "mysql")
 
-	for svc in $svcs[@]
+	for svc in ${svcs[@]}
 	do
-		service_build svc
+		service_build $svc
 	done
 }
 
