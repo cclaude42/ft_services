@@ -18,4 +18,4 @@ spec:
         imagePullPolicy: Never
         ports:
         - containerPort: 3306
-          name: sql_port
+          name: sql-port

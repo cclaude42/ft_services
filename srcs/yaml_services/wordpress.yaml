@@ -6,7 +6,7 @@ spec:
   selector:
     app: wordpress
   ports:
-    - name: wp_port
+    - name: wp-port
       protocol: TCP
       port: 5050
       targetPort: 80
