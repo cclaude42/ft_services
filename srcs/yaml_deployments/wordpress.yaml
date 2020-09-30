@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: wordpress_deployment
+  name: wordpress-deployment
 spec:
   selector:
     matchLabels:
