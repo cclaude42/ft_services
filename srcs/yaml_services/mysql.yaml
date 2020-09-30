@@ -10,5 +10,3 @@ spec:
       protocol: TCP
       port: 3306
       targetPort: 3306
-  type: LoadBalancer
-  # loadBalancerIP: 172.17.0.X

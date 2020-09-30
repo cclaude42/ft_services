@@ -19,4 +19,4 @@ spec:
       port: 22
       targetPort: 22
   type: LoadBalancer
-  # loadBalancerIP: 172.17.0.X
+  loadBalancerIP: 172.17.0.1
