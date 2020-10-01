@@ -61,6 +61,34 @@ services()
 	done
 }
 
+custom()
+{
+	for i in $@
+	do
+		if [[ $i =~ ^(nginx|wordpress|mysql|phpmyadmin|influxdb|grafana|ftps)$ ]];
+		then
+			image_build $i
+			deployment_build $i
+			service_build $i
+		elif [ $i = vm ]
+		then
+			vm_setup
+		elif [ $i = minikube ]
+		then
+			minikube_setup
+		elif [ $i = img ]
+		then
+			images
+		elif [ $i = dep ]
+		then
+			deployments
+		elif [ $i = svc ]
+		then
+			services
+		fi
+	done
+}
+
 main()
 {
 	vm_setup
@@ -70,4 +98,9 @@ main()
 	services
 }
 
-main
+if [ $1 ]
+then
+	custom $@
+else
+	main
+fi
