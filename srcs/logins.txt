@@ -2,7 +2,7 @@
 
 MySQL database name : wordpress
 
-MySQL database username : wordpress_admin
+MySQL database username : wp_admin
 
 MySQL database password : 1010
 
@@ -22,6 +22,6 @@ Key location : etc/ssl/private/services.key
 
 = MySQL =
 
-MySQL user : mysql_user
+MySQL user : SEE WORDPRESS
 
-MySQL password : 1100
+MySQL password : SEE WORDPRESS
