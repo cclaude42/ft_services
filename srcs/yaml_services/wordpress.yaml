@@ -11,4 +11,4 @@ spec:
       port: 5050
       targetPort: 80
   type: LoadBalancer
-  loadBalancerIP: 172.17.0.2
+  loadBalancerIP: 172.17.0.3
