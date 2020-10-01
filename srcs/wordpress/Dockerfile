@@ -12,8 +12,8 @@ ADD https://wordpress.org/latest.tar.gz .
 
 # Install Wordpress
 RUN tar -xvf latest.tar.gz && \
-	mv wordpress www && \
-	mv wp-config.php www/ && \
+	mv wordpress /www && \
+	mv wp-config.php /www/ && \
 	rm -f latest.tar.gz
 
 EXPOSE 5050

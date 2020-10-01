@@ -6,6 +6,9 @@ COPY setup.sh my.cnf mysql_init ./
 RUN apk update && \
 	apk add --no-cache mysql mysql-client
 
+# Setup MySQL
+RUN mkdir -p /run/mysqld
+
 EXPOSE 3306
 
 CMD ./setup.sh

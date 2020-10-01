@@ -7,9 +7,9 @@ RUN apk update && \
 	apk add --no-cache nginx openssh openssl
 
 # Setup nginx
-RUN mkdir -p run/nginx www && \
-	mv nginx.conf etc/nginx/ && \
-	mv index.html www/
+RUN mkdir -p /run/nginx www && \
+	mv nginx.conf /etc/nginx/ && \
+	mv index.html /www/
 
 # Setup SSH
 RUN ssh-keygen -A && \
