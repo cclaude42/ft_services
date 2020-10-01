@@ -1,5 +1,5 @@
 # Setup MySQL
-/usr/bin/mysql_install_db --user=root --datadir=/var/lib/mysql
+/usr/bin/mysql_install_db --datadir=/var/lib/mysql
 
 # Start MySQL
-/usr/bin/mysqld --user=root --datadir=/var/lib/mysql --init_file=mysql_init --console
+/usr/bin/mysqld --user=root --init_file=/init_file
