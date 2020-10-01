@@ -91,7 +91,6 @@ custom()
 
 main()
 {
-	vm_setup
 	minikube_setup
 	images
 	deployments
