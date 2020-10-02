@@ -7,7 +7,8 @@ RUN apk update && \
 	apk add --no-cache mysql mysql-client
 
 # Setup MySQL
-RUN mkdir -p /run/mysqld
+RUN mkdir -p /run/mysqld && \
+	mv my.cnf /etc/
 
 EXPOSE 3306
 

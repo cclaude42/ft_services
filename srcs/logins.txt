@@ -25,3 +25,8 @@ Key location : etc/ssl/private/services.key
 MySQL user : SEE WORDPRESS
 
 MySQL password : SEE WORDPRESS
+
+
+
+=> ROOT NOPASSWD (config.php + mysqlSetup.sh + Mysql_init)
+=> lots of php extensions
