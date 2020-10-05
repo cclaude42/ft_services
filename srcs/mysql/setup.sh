@@ -1,7 +1,8 @@
 # Setup MySQL
 /usr/bin/mysql_install_db --datadir=/var/lib/mysql
 
-mysql wordpress -u root < wordpress.sql
+cat init_file | mysql -u root
+cat wordpress.sql | mysql wordpress -u root
 
 # Start MySQL
-/usr/bin/mysqld --user=root --init_file=/init_file
+/usr/bin/mysqld --user=root
