@@ -1,3 +1,4 @@
 CREATE DATABASE wordpress;
 GRANT ALL PRIVILEGES ON wordpress.* TO 'wp_admin'@'%' IDENTIFIED BY '1010';
 FLUSH PRIVILEGES;
+exit
