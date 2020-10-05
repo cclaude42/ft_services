@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-COPY setup.sh my.cnf wordpress.sql ./
+COPY init_file wordpress.sql my.cnf setup.sh ./
 
 # Install MySQL and dependencies
 RUN apk update && \
