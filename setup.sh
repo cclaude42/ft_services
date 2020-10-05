@@ -1,8 +1,15 @@
-#!/bin/bash
+#!/bin/bash -e
 
 vm_setup()
 {
-	echo Setup VM
+	if [ -f "~/.vm_setup" ];
+	then
+		echo "Setting up VM..."
+		curl -L "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl" -o /usr/local/bin/kubectl
+		curl -L minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 -o /usr/local/bin/minikube
+		chmod +x /usr/local/bin/kubectl /usr/local/bin/minikube
+		touch ~/.vm_setup
+	fi
 }
 
 minikube_setup()
