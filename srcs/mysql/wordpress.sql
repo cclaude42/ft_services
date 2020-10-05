@@ -1,3 +1,8 @@
+-- Initialize user
+
+GRANT ALL PRIVILEGES ON wordpress.* TO 'wp_admin'@'%' IDENTIFIED BY '1010';
+FLUSH PRIVILEGES;
+
 -- phpMyAdmin SQL Dump
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
