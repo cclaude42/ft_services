@@ -6,14 +6,14 @@ MySQL database username : wp_admin
 
 MySQL database password : 1010
 
-MySQL hostname : mysql
+MySQL hostname : mysql-service
 
 
 = nginx =
 
 SSH username : ssh_user
 
-SSH password : 1011
+SSH password : 0101
 
 Certificate location : etc/ssl/certs/services.crt
 
@@ -25,6 +25,10 @@ Key location : etc/ssl/private/services.key
 MySQL user : SEE WORDPRESS
 
 MySQL password : SEE WORDPRESS
+
+= PHPMyAdmin =
+
+SAME
 
 
 
