@@ -28,10 +28,6 @@ USE `test`;
 CREATE DATABASE IF NOT EXISTS `wordpress` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `wordpress`;
 
--- <<<<<<<<<<<<<<<<<<<< ADD PRIVILEGES >>>>>>>>>>>>>>>>>>>>>
-GRANT ALL PRIVILEGES ON wordpress.* TO 'wp_admin'@'%' IDENTIFIED BY '1010';
-FLUSH PRIVILEGES;
-
 -- --------------------------------------------------------
 
 --
