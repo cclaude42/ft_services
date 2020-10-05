@@ -2,12 +2,12 @@
 
 vm_setup()
 {
-	if [ -f "~/.vm_setup" ];
+	if [ ! -f "~/.vm_setup" ];
 	then
 		echo "Setting up VM..."
-		curl -L "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl" -o /usr/local/bin/kubectl
-		curl -L minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 -o /usr/local/bin/minikube
-		chmod +x /usr/local/bin/kubectl /usr/local/bin/minikube
+		sudo curl -L "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl" -o /usr/local/bin/kubectl
+		sudo curl -L minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 -o /usr/local/bin/minikube
+		sudo chmod +x /usr/local/bin/kubectl /usr/local/bin/minikube
 		touch ~/.vm_setup
 	fi
 }
@@ -98,6 +98,7 @@ custom()
 
 main()
 {
+	vm_setup
 	minikube_setup
 	images
 	deployments
