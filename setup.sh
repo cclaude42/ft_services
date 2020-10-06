@@ -11,8 +11,9 @@ vm_setup()
 		echo "Updating minikube..."
 		sudo curl -L https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 -o /usr/local/bin/minikube &> /dev/null
 		sudo chmod +x /usr/local/bin/kubectl /usr/local/bin/minikube &> /dev/null
-		sudo usermod -aG docker user42 &> /dev/null
-		sudo newgrp docker &
+		echo "Setting docker user..."
+		sudo usermod -aG docker user42 && newgrp docker &
+		sleep 1
 		touch ~/.vm_setup
 		echo "VM is set !"
 	fi
