@@ -7,8 +7,8 @@ RUN apk update && \
 	apk add --no-cache vsftpd openssl
 
 # Setup vsftpd
-RUN mkdir /ftps/ftp_user && \
-	adduser -D --home=/ftps/ftp_user && \
+RUN mkdir etc/ftps/ftp_user && \
+	adduser -D --home=/etc/ftps/ftp_user && \
 	echo "ftp_user:0110" | chpasswd && \
 	echo "ftp_user" >> /etc/vsftpd/vsftpd.userlist && \
 	mv vsftpd.conf /etc/vsftpd/
