@@ -27,4 +27,4 @@ spec:
       port: 21011
       targetPort: 21011
   type: LoadBalancer
-  loadBalancerIP: 172.17.0.5
+  loadBalancerIP: 172.17.0.6

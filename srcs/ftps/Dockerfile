@@ -7,12 +7,16 @@ RUN apk update && \
 	apk add --no-cache vsftpd openssl
 
 # Setup vsftpd
-RUN mv vsftpd.conf /etc/vsftpd/
+RUN mkdir /ftps/ftp_user && \
+	adduser -D --home=/ftps/ftp_user && \
+	echo "ftp_user:0110" | chpasswd && \
+	echo "ftp_user" >> /etc/vsftpd/vsftpd.userlist && \
+	mv vsftpd.conf /etc/vsftpd/
 
 # Setup SSL
 RUN openssl req -new -newkey rsa:2048 -nodes -days 365 -x509 \
 	-subj "/C=FR/ST=IDF/L=Paris/O=42/OU=Federation/CN=localhost" \
-	-keyout etc/ssl/private/vsftpd.key -out etc/ssl/certs/vsftpd.crt
+	-keyout /etc/ssl/private/vsftpd.key -out /etc/ssl/certs/vsftpd.crt
 
 EXPOSE 20 21 21009-21011
 
