@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ftps-service
+spec:
+  selector:
+    app: ftps
+  ports:
+    - name: ftp
+      protocol: TCP
+      port: 20
+      targetPort: 20
+    - name: ftps
+      protocol: TCP
+      port: 21
+      targetPort: 21
+    - port: 21001
+      targetPort: 21001
+    - port: 21002
+      targetPort: 21002
+    - port: 21003
+      targetPort: 21003
+    - port: 21004
+      targetPort: 21004
+    - port: 21005
+      targetPort: 21005
+    - port: 21006
+      targetPort: 21006
+    - port: 21007
+      targetPort: 21007
+    - port: 21008
+      targetPort: 21008
