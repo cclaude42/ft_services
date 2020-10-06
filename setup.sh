@@ -83,6 +83,7 @@ custom()
 
 main()
 {
+	./srcs/vm_setup.sh
 	minikube_setup
 	images
 	deployments

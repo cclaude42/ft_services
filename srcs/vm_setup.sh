@@ -1,3 +1,5 @@
+#!/bin/bash
+
 vm_setup()
 {
 	if [ ! -f ~/.vm_setup ];
