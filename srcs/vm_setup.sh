@@ -13,10 +13,8 @@ vm_setup()
 		sudo chmod +x /usr/local/bin/kubectl /usr/local/bin/minikube &> /dev/null
 		echo "Setting docker user..."
 		touch ~/.vm_setup
-		sudo usermod -aG docker user42 && newgrp docker
 		echo "VM is set !"
-	else
-		echo "VM is already set !"
+		sudo usermod -aG docker user42 && newgrp docker
 	fi
 }
 
