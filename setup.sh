@@ -28,7 +28,7 @@ service_build()
 
 images()
 {
-	imgs=("nginx" "wordpress" "mysql" "phpmyadmin")
+	imgs=("nginx" "wordpress" "mysql" "phpmyadmin" "ftps")
 
 	for img in "${imgs[@]}"
 	do
@@ -38,7 +38,7 @@ images()
 
 deployments()
 {
-	deps=("nginx" "wordpress" "mysql" "phpmyadmin")
+	deps=("nginx" "wordpress" "mysql" "phpmyadmin" "ftps")
 
 	for dep in ${deps[@]}
 	do
@@ -48,7 +48,7 @@ deployments()
 
 services()
 {
-	svcs=("nginx" "wordpress" "mysql" "phpmyadmin")
+	svcs=("nginx" "wordpress" "mysql" "phpmyadmin" "ftps")
 
 	for svc in ${svcs[@]}
 	do
