@@ -30,3 +30,5 @@ spec:
       targetPort: 21007
     - port: 21008
       targetPort: 21008
+  type: LoadBalancer
+  loadBalancerIP: 172.17.0.4
