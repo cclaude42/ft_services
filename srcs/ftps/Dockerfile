@@ -8,7 +8,7 @@ RUN apk update && \
 
 # Create user
 RUN mkdir -p /etc/ftps/ftp_user && \
-	adduser -D -h /etc/ftps/ftp_user && \
+	adduser --home=/etc/ftps/ftp_user -D ftp_user && \
 	echo "ftp_user:0110" | chpasswd
 
 # Setup vsftpd
