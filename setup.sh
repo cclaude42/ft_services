@@ -5,7 +5,8 @@ minikube_setup()
 	minikube delete
 	minikube start --driver=docker --cpus=2
 	minikube addons enable metrics-server
-	minikube addons enable dashboard
+	minikube addons enable dashboard &> /dev/null
+	echo ""
 	minikube addons enable metallb
 	kubectl apply -f srcs/yaml_metallb/metallb.yaml
 	eval $(minikube docker-env)
@@ -13,17 +14,19 @@ minikube_setup()
 
 image_build()
 {
-	docker build -t ${1}_alpine srcs/$1/.
+	docker build -t ${1}_alpine srcs/$1/. | grep "Step \| built"
 }
 
 deployment_build()
 {
-	kubectl create -f srcs/yaml_deployments/$1.yaml
+	kubectl create -f srcs/yaml_deployments/$1.yaml &> /dev/null
+	echo "Successfully deployed $1 !"
 }
 
 service_build()
 {
-	kubectl create -f srcs/yaml_services/$1.yaml
+	kubectl create -f srcs/yaml_services/$1.yaml &> /dev/null
+	echo "Successfully deployed $1 !"
 }
 
 images()
