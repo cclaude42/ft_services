@@ -1,15 +1,16 @@
 #!/bin/bash -e
 
-minikube_setup()
+banner()
 {
-	minikube delete
-	minikube start --driver=docker --cpus=2
-	minikube addons enable metrics-server
-	minikube addons enable dashboard &> /dev/null
-	echo "🌟  The 'dashboard' addon is enabled"
-	minikube addons enable metallb
-	kubectl apply -f srcs/yaml_metallb/metallb.yaml
-	eval $(minikube docker-env)
+	echo
+	echo "8888888888 88888888888                                          d8b                           "
+	echo "888            888                                              Y8P                           "
+	echo "888            888                                                                            "
+	echo "8888888        888           .d8888b   .d88b.  888d888 888  888 888  .d8888b .d88b.  .d8888b  "
+	echo "888            888           88K      d8P  Y8b 888P\"   888  888 888 d88P\"   d8P  Y8b 88K      "
+	echo "888            888           \"Y8888b. 88888888 888     Y88  88P 888 888     88888888 \"Y8888b. "
+	echo "888            888                X88 Y8b.     888      Y8bd8P  888 Y88b.   Y8b.          X88 "
+	echo "888            888   88888888 88888P'  \"Y8888  888       Y88P   888  \"Y8888P \"Y8888   88888P' "
 	echo
 }
 
@@ -22,14 +23,27 @@ image_build()
 
 deployment_build()
 {
-	kubectl create -f srcs/yaml_deployments/$1.yaml &> /dev/null
-	echo -e "Successfully deployed $1 !"
+	kubectl apply -f srcs/yaml_deployments/$1.yaml &> /dev/null
+	echo "Successfully deployed $1 !"
 }
 
 service_build()
 {
-	kubectl create -f srcs/yaml_services/$1.yaml &> /dev/null
-	echo -e "Successfully exposed $1 !"
+	kubectl apply -f srcs/yaml_services/$1.yaml &> /dev/null
+	echo "Successfully exposed $1 !"
+}
+
+minikube_setup()
+{
+	minikube delete
+	minikube start --driver=docker --cpus=2
+	minikube addons enable metrics-server
+	minikube addons enable dashboard &> /dev/null
+	echo "🌟  The 'dashboard' addon is enabled"
+	minikube addons enable metallb
+	kubectl apply -f srcs/yaml_metallb/metallb.yaml
+	eval $(minikube docker-env)
+	echo
 }
 
 images()
@@ -65,6 +79,16 @@ services()
 	echo
 }
 
+main()
+{
+	./srcs/vm_setup.sh
+	minikube_setup
+	images
+	deployments
+	services
+	echo "Ft_services is ready !"
+}
+
 custom()
 {
 	for i in $@
@@ -89,25 +113,6 @@ custom()
 		fi
 	done
 }
-
-main()
-{
-	./srcs/vm_setup.sh
-	minikube_setup
-	images
-	deployments
-	services
-	echo "Ft_services is ready !"
-}
-
-echo "8888888888 88888888888                                          d8b                           "
-echo "888            888                                              Y8P                           "
-echo "888            888                                                                            "
-echo "8888888        888           .d8888b   .d88b.  888d888 888  888 888  .d8888b .d88b.  .d8888b  "
-echo "888            888           88K      d8P  Y8b 888P\"   888  888 888 d88P\"   d8P  Y8b 88K      "
-echo "888            888           \"Y8888b. 88888888 888     Y88  88P 888 888     88888888 \"Y8888b. "
-echo "888            888                X88 Y8b.     888      Y8bd8P  888 Y88b.   Y8b.          X88 "
-echo "888            888   88888888 88888P'  \"Y8888  888       Y88P   888  \"Y8888P \"Y8888   88888P' "
 
 if [ $1 ]
 then
