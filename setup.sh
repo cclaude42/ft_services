@@ -2,9 +2,9 @@
 
 banner()
 {
-	echo -e "\e[35m"
+	echo -e "\e[95m"
 	echo "##############################################################################################"
-	echo -en "\e[36m"
+	echo -e "\e[96m"
 	echo "8888888888 88888888888                                          d8b                           "
 	echo "888            888                                              Y8P                           "
 	echo "888            888                                                                            "
@@ -13,28 +13,28 @@ banner()
 	echo "888            888           \"Y8888b. 88888888 888     Y88  88P 888 888     88888888 \"Y8888b. "
 	echo "888            888                X88 Y8b.     888      Y8bd8P  888 Y88b.   Y8b.          X88 "
 	echo "888            888   88888888 88888P'  \"Y8888  888       Y88P   888  \"Y8888P \"Y8888   88888P' "
-	echo -e "\e[35m"
+	echo -e "\e[95m"
 	echo "##############################################################################################"
-	echo -e "\e[31m"
+	echo -e "\e[97m"
 }
 
 image_build()
 {
-	echo -e "\e[34mBuilding $1 image...\e[33m"
+	echo -e "\e[94mBuilding $1 image...\e[97m"
 	docker build -t ${1}_alpine srcs/$1/. | grep "Step"
-	echo -e "\e[32mSuccessfully built $1 image !\n"
+	echo -e "\e[92mSuccessfully built $1 image !\n"
 }
 
 deployment_build()
 {
 	kubectl apply -f srcs/yaml_deployments/$1.yaml &> /dev/null
-	echo -e "\e[35mSuccessfully deployed $1 !"
+	echo -e "\e[94mSuccessfully deployed $1 !"
 }
 
 service_build()
 {
 	kubectl apply -f srcs/yaml_services/$1.yaml &> /dev/null
-	echo -e "\e[36mSuccessfully exposed $1 !"
+	echo -e "\e[94mSuccessfully exposed $1 !"
 }
 
 minikube_setup()
@@ -91,7 +91,7 @@ main()
 	images
 	deployments
 	services
-	echo -e "\e[30mFt_services is ready !"
+	echo -e "\e[97mFt_services is ready !"
 }
 
 custom()
