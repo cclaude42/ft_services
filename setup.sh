@@ -20,7 +20,7 @@ banner()
 
 image_build()
 {
-	echo -e "\e[94mBuilding $1 image...\e[97m"
+	echo -e "\e[93mBuilding $1 image...\e[97m"
 	docker build -t ${1}_alpine srcs/$1/. | grep "Step"
 	echo -e "\e[92mSuccessfully built $1 image !\n"
 }
@@ -28,13 +28,13 @@ image_build()
 deployment_build()
 {
 	kubectl apply -f srcs/yaml_deployments/$1.yaml &> /dev/null
-	echo -e "\e[94mSuccessfully deployed $1 !"
+	echo -e "\e[92mSuccessfully deployed $1 !"
 }
 
 service_build()
 {
 	kubectl apply -f srcs/yaml_services/$1.yaml &> /dev/null
-	echo -e "\e[94mSuccessfully exposed $1 !"
+	echo -e "\e[92mSuccessfully exposed $1 !"
 }
 
 minikube_setup()
