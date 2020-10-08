@@ -1,14 +1,3 @@
-= Wordpress =
-
-MySQL database name : wordpress
-
-MySQL database username : wp_admin
-
-MySQL database password : 1010
-
-MySQL hostname : mysql-service
-
-
 = nginx =
 
 SSH username : ssh_user
@@ -20,16 +9,29 @@ Certificate location : etc/ssl/certs/services.crt
 Key location : etc/ssl/private/services.key
 
 
-= MySQL =
+= Wordpress / MySQL / PHPMyAdmin s=
 
-MySQL user : SEE WORDPRESS
+MySQL database name : wordpress
 
-MySQL password : SEE WORDPRESS
+MySQL database username : wp_admin
 
-= PHPMyAdmin =
+MySQL database password : 1010
 
-SAME
+MySQL hostname : mysql-service
 
+
+= FTPS =
+
+user : ftp_user
+
+password : 0110
+
+
+= Grafana / InfluxDB =
+
+user : graf_user
+
+password : 1001
 
 
 => ROOT NOPASSWD (config.php + mysqlSetup.sh + Mysql_init)
