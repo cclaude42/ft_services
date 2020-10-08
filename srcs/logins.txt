@@ -1,6 +1,6 @@
 = nginx =
 
-SSH username : ssh_user
+SSH username : ssh_admin
 
 SSH password : 0101
 
@@ -22,17 +22,13 @@ MySQL hostname : mysql-service
 
 = FTPS =
 
-user : ftp_user
+user : ftp_admin
 
-password : 0110
+password : 01010
 
 
 = Grafana / InfluxDB =
 
-user : graf_user
+user : graf_admin
 
-password : 1001
-
-
-=> ROOT NOPASSWD (config.php + mysqlSetup.sh + Mysql_init)
-=> lots of php extensions
+password : 10101

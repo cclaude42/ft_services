@@ -1,2 +1,7 @@
 # Start influxdb
-/usr/sbin/influxd
+/usr/sbin/influxd & sleep 3
+
+# Initialize database
+influx -execute "CREATE DATABASE grafana"
+influx -execute "CREATE USER graf_admin WITH PASSWORD '10101'"
+influx -execute "GRANT ALL ON grafana TO graf_admin"

@@ -13,8 +13,8 @@ RUN mkdir -p /run/nginx www && \
 
 # Setup SSH
 RUN ssh-keygen -A && \
-	adduser -D ssh_user && \
-	echo "ssh_user:0101" | chpasswd
+	adduser -D ssh_admin && \
+	echo "ssh_admin:0101" | chpasswd
 
 # Setup SSL
 RUN openssl req -new -newkey rsa:2048 -nodes -days 365 -x509 \

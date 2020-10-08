@@ -1,2 +1,2 @@
 # Start Grafana
-/usr/sbin/grafana-server
+/usr/sbin/grafana-server --homepath=/usr/share/grafana
