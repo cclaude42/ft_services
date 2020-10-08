@@ -34,7 +34,7 @@ service_build()
 
 images()
 {
-	imgs=("nginx" "wordpress" "mysql" "phpmyadmin" "ftps")
+	imgs=("nginx" "wordpress" "mysql" "phpmyadmin" "ftps" "grafana" "influxdb")
 
 	for img in "${imgs[@]}"
 	do
@@ -45,7 +45,7 @@ images()
 
 deployments()
 {
-	deps=("nginx" "wordpress" "mysql" "phpmyadmin" "ftps")
+	deps=("nginx" "wordpress" "mysql" "phpmyadmin" "ftps" "grafana" "influxdb")
 
 	for dep in ${deps[@]}
 	do
@@ -56,7 +56,7 @@ deployments()
 
 services()
 {
-	svcs=("nginx" "wordpress" "mysql" "phpmyadmin" "ftps")
+	svcs=("nginx" "wordpress" "mysql" "phpmyadmin" "ftps" "grafana" "influxdb")
 
 	for svc in ${svcs[@]}
 	do
@@ -69,7 +69,7 @@ custom()
 {
 	for i in $@
 	do
-		if [[ $i =~ ^(nginx|wordpress|mysql|phpmyadmin|influxdb|grafana|ftps)$ ]];
+		if [[ $i =~ ^(nginx|wordpress|mysql|phpmyadmin|ftps|grafana|influxdb)$ ]];
 		then
 			image_build $i
 			deployment_build $i
