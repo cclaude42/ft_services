@@ -82,6 +82,7 @@ services()
 main()
 {
 	./srcs/vm_setup.sh
+	banner
 	minikube_setup
 	images
 	deployments
