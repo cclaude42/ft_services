@@ -6,7 +6,6 @@ spec:
   selector:
     matchLabels:
       app: grafana
-  # replicas: 2
   template:
     metadata:
       labels:
@@ -19,3 +18,11 @@ spec:
         ports:
         - containerPort: 3000
           name: graf-port
+        livenessProbe:
+          exec:
+            command:
+            - /bin/ash
+            - -c
+            - 'pgrep telegraf && pgrep grafana-server'
+          initialDelaySeconds: 10
+          periodSeconds: 5

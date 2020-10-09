@@ -6,7 +6,6 @@ spec:
   selector:
     matchLabels:
       app: ftps
-  # replicas: 2
   template:
     metadata:
       labels:
@@ -27,3 +26,11 @@ spec:
           name: pasv-mid
         - containerPort: 21011
           name: pasv-max
+        livenessProbe:
+          exec:
+            command:
+            - /bin/ash
+            - -c
+            - 'pgrep telegraf && pgrep vsftpd'
+          initialDelaySeconds: 10
+          periodSeconds: 5

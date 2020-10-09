@@ -6,7 +6,6 @@ spec:
   selector:
     matchLabels:
       app: influxdb
-  # replicas: 2
   template:
     metadata:
       labels:
@@ -19,3 +18,18 @@ spec:
         ports:
         - containerPort: 8086
           name: idb-port
+        volumeMounts:
+        - name: influxdb-storage
+          mountPath: /var/lib/influxdb
+        livenessProbe:
+          exec:
+            command:
+            - /bin/ash
+            - -c
+            - 'pgrep telegraf && pgrep influxd'
+          initialDelaySeconds: 10
+          periodSeconds: 5
+    volumes:
+    - name: influxdb-storage
+      persistentVolumeClaim:
+        claimName: influxdb-volume

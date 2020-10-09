@@ -6,7 +6,6 @@ spec:
   selector:
     matchLabels:
       app: phpmyadmin
-  # replicas: 2
   template:
     metadata:
       labels:
@@ -19,3 +18,11 @@ spec:
         ports:
         - containerPort: 80
           name: php-port
+        livenessProbe:
+          exec:
+            command:
+            - /bin/ash
+            - -c
+            - 'pgrep telegraf && pgrep php'
+          initialDelaySeconds: 10
+          periodSeconds: 5
