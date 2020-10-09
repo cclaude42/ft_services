@@ -28,15 +28,20 @@ banner()
 
 footer()
 {
-	echo -e $GREEN
-	kubectl get svc
+	echo -en $GREEN
+	echo "Everything is set up !"
 	echo -e $CYAN
 	echo "FT_SERVICES IS READY !"
 	echo "Go to 172.17.0.2 to try it."
+	echo
+	kubectl get svc
 	echo -e $GREEN
-	echo "Services    | Wordpress  | Grafana    | FTPS       | SSH        "
-	echo "Login       | wp_admin   | admin      | ftp_admin  | ssh_admin  "
-	echo "Password    | 1010       | admin      | 01010      | 0101       "
+	echo "---------------------------------------------------------------------------------"
+	echo "| Services      | Wordpress     | Grafana       | FTPS          | SSH           |"
+	echo "|-------------------------------------------------------------------------------|"
+	echo "| Login         | wp_admin      | admin         | ftp_admin     | ssh_admin     |"
+	echo "| Password      | 1010          | admin         | 01010         | 0101          |"
+	echo "---------------------------------------------------------------------------------"
 	echo -e $WHITE
 }
 
@@ -54,6 +59,7 @@ minikube_setup()
 	eval $(minikube docker-env)
 	echo -en $GREEN
 	echo "Minikube is ready !"
+	echo
 }
 
 image_build()
@@ -63,14 +69,8 @@ image_build()
 	echo -en $YELLOW
 	docker build -t ${1}_alpine srcs/$1/. | grep "Step"
 	echo -en $GREEN
-	echo "Successfully built $1 image !\n"
-}
-
-deployment_build()
-{
-	kubectl apply -f srcs/yaml_deployments/$1.yaml &> /dev/null
-	echo -en $BLUE
-	echo "Successfully deployed $1 !"
+	echo "Successfully built $1 image !"
+	echo
 }
 
 volume_build()
@@ -78,6 +78,13 @@ volume_build()
 	kubectl apply -f srcs/yaml_volumes/$1.yaml &> /dev/null
 	echo -en $RED
 	echo "Successfully created $1 volume !"
+}
+
+deployment_build()
+{
+	kubectl apply -f srcs/yaml_deployments/$1.yaml &> /dev/null
+	echo -en $PURPLE
+	echo "Successfully deployed $1 !"
 }
 
 service_build()
@@ -95,18 +102,7 @@ images()
 	do
 		image_build $img
 	done
-	echo
-}
-
-deployments()
-{
-	deps=("nginx" "wordpress" "mysql" "phpmyadmin" "ftps" "grafana" "influxdb")
-
-	for dep in ${deps[@]}
-	do
-		deployment_build $dep
-	done
-	echo
+	echo -e $WHITE
 }
 
 volumes()
@@ -117,7 +113,16 @@ volumes()
 	do
 		volume_build $dep
 	done
-	echo
+}
+
+deployments()
+{
+	deps=("nginx" "wordpress" "mysql" "phpmyadmin" "ftps" "grafana" "influxdb")
+
+	for dep in ${deps[@]}
+	do
+		deployment_build $dep
+	done
 }
 
 services()
@@ -128,7 +133,6 @@ services()
 	do
 		service_build $svc
 	done
-	echo
 }
 
 main()
@@ -137,8 +141,9 @@ main()
 	banner
 	minikube_setup
 	images
-	deployments
+	echo "Setting up cluster..."
 	volumes
+	deployments
 	services
 	footer
 }
