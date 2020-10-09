@@ -4591,7 +4591,7 @@
         "options": [],
         "query": "SHOW TAG VALUES FROM system WITH KEY=host",
         "refresh": 1,
-        "regex": "",
+        "regex": "/wordpress*/",
         "sort": 0,
         "tagValuesQuery": "",
         "tags": [],
@@ -4801,6 +4801,6 @@
     ]
   },
   "timezone": "browser",
-  "title": "Telegraf - system metrics",
+  "title": "WordPress",
   "version": 2
 }
