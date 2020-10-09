@@ -84,7 +84,7 @@ volumes()
 
 	for dep in ${deps[@]}
 	do
-		deployment_build $dep
+		volume_build $dep
 	done
 	echo
 }
