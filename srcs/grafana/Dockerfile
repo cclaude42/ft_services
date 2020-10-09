@@ -8,7 +8,7 @@ RUN apk update && \
 
 # Configure Grafana
 RUN mv datasource.yaml /usr/share/grafana/conf/provisioning/datasources/ && \
-	mv dashboards dashboard.yaml /usr/share/grafana/conf/provisioning/dashboards/
+	mv *.json dashboard.yaml /usr/share/grafana/conf/provisioning/dashboards/
 
 # Install telegraf
 RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing/ telegraf && \
