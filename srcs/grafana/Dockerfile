@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-COPY datasource.yaml dashboard.yaml dashboard.json telegraf.conf setup.sh ./
+COPY datasource.yaml dashboard.yaml dashboards telegraf.conf setup.sh ./
 
 # Install Grafana
 RUN apk update && \
@@ -8,8 +8,7 @@ RUN apk update && \
 
 # Configure Grafana
 RUN mv datasource.yaml /usr/share/grafana/conf/provisioning/datasources/ && \
-	mv dashboard.yaml /usr/share/grafana/conf/provisioning/dashboards/ && \
-	mv dashboard.json /usr/share/grafana/conf/provisioning/dashboards/
+	mv dashboards dashboard.yaml /usr/share/grafana/conf/provisioning/dashboards/
 
 # Install telegraf
 RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing/ telegraf && \

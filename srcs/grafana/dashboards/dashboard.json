@@ -4580,7 +4580,7 @@
         "type": "datasource"
       },
       {
-        "allValue": null,
+        "allValue": "nginx-deployment",
         "current": {},
         "datasource": "${DS_INFLUXDB}",
         "hide": 0,
