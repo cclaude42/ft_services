@@ -27,8 +27,15 @@ user : ftp_admin
 password : 01010
 
 
-= Grafana / InfluxDB =
+= InfluxDB / telegraf=
 
 user : graf_admin
 
 password : 10101
+
+
+= Grafana (defaults) =
+
+user : admin
+
+password : admin
