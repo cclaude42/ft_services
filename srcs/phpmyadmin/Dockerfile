@@ -16,6 +16,11 @@ RUN tar -xvf phpMyAdmin-5.0.2-english.tar.gz && \
 	mv config.inc.php /www/ && \
 	rm -f phpMyAdmin-5.0.2-english.tar.gz
 
+# Install telegraf
+RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing/ telegraf && \
+	mkdir -p /etc/telegraf && \
+	mv telegraf.conf /etc/telegraf/
+
 EXPOSE 5000
 
 CMD ./setup.sh

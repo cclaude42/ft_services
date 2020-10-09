@@ -9,6 +9,11 @@ RUN apk update && \
 # Configure Grafana
 RUN mv influxdb.yaml /usr/share/grafana/conf/provisioning/datasources/
 
+# Install telegraf
+RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing/ telegraf && \
+	mkdir -p /etc/telegraf && \
+	mv telegraf.conf /etc/telegraf/
+
 EXPOSE 3000
 
 CMD ./setup.sh

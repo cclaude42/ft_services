@@ -1,3 +1,6 @@
+# Start telegraf
+/usr/bin/telegraf &
+
 # Start influxdb
 /usr/sbin/influxd & sleep 3
 
