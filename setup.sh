@@ -30,10 +30,11 @@ footer()
 {
 	echo -en $GREEN
 	echo "Everything is set up !"
-	echo -e $CYAN
+	echo
+	echo -e $WHITE
 	echo "FT_SERVICES IS READY !"
 	echo "Go to 172.17.0.2 to try it."
-	echo
+	echo -e $CYAN
 	kubectl get svc
 	echo -e $GREEN
 	echo "---------------------------------------------------------------------------------"
@@ -55,7 +56,8 @@ minikube_setup()
 	minikube addons enable dashboard &> /dev/null
 	echo "🌟  The 'dashboard' addon is enabled"
 	minikube addons enable metallb
-	kubectl apply -f srcs/yaml_metallb/metallb.yaml
+	kubectl apply -f srcs/yaml_metallb/metallb.yaml &> /dev/null
+	echo "🌟  The MetalLB has been configured"
 	eval $(minikube docker-env)
 	echo -en $GREEN
 	echo "Minikube is ready !"
@@ -102,7 +104,7 @@ images()
 	do
 		image_build $img
 	done
-	echo -e $WHITE
+	echo -en $WHITE
 }
 
 volumes()
