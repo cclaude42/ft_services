@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-COPY wp-config.php setup.sh ./
+COPY wp-config.php telegraf.conf setup.sh ./
 
 # Install PHP
 RUN apk update && \

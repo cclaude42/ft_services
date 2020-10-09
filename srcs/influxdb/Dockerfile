@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-COPY setup.sh ./
+COPY telegraf.conf setup.sh ./
 
 # Install influxdb and dependencies
 RUN apk update && \

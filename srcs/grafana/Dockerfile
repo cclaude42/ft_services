@@ -1,13 +1,15 @@
 FROM alpine:latest
 
-COPY influxdb.yaml setup.sh ./
+COPY datasource.yaml dashboard.yaml telegraf.conf setup.sh ./
 
 # Install Grafana
 RUN apk update && \
 	apk add --no-cache --repository http://dl-3.alpinelinux.org/alpine/edge/testing/ grafana
 
 # Configure Grafana
-RUN mv influxdb.yaml /usr/share/grafana/conf/provisioning/datasources/
+RUN mv datasource.yaml /usr/share/grafana/conf/provisioning/datasources/ && \
+	mv dashboard.yaml /usr/share/grafana/conf/provisioning/dashboards/ && \
+	mv dashboard.json /usr/share/grafana/conf/provisioning/dashboards/
 
 # Install telegraf
 RUN apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing/ telegraf && \

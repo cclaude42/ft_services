@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-COPY vsftpd.conf setup.sh ./
+COPY vsftpd.conf telegraf.conf setup.sh ./
 
 # Install vsftpd and dependencies
 RUN apk update && \

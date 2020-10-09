@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-COPY init_file wordpress.sql my.cnf setup.sh ./
+COPY init_file wordpress.sql my.cnf telegraf.conf setup.sh ./
 
 # Install MySQL and dependencies
 RUN apk update && \

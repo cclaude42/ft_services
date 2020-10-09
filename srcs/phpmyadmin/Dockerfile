@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-COPY config.inc.php setup.sh ./
+COPY config.inc.php telegraf.conf setup.sh ./
 
 # Install PHP
 RUN apk update && \
