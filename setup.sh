@@ -31,6 +31,12 @@ deployment_build()
 	echo -e "\e[92mSuccessfully deployed $1 !"
 }
 
+volume_build()
+{
+	kubectl apply -f srcs/yaml_volumes/$1.yaml &> /dev/null
+	echo -e "\e[92mSuccessfully created $1 volume !"
+}
+
 service_build()
 {
 	kubectl apply -f srcs/yaml_services/$1.yaml &> /dev/null
@@ -72,6 +78,17 @@ deployments()
 	echo
 }
 
+volumes()
+{
+	deps=("mysql" "influxdb")
+
+	for dep in ${deps[@]}
+	do
+		deployment_build $dep
+	done
+	echo
+}
+
 services()
 {
 	svcs=("nginx" "wordpress" "mysql" "phpmyadmin" "ftps" "grafana" "influxdb")
@@ -90,6 +107,7 @@ main()
 	minikube_setup
 	images
 	deployments
+	volumes
 	services
 	echo -e "\e[97mFt_services is ready !"
 }
