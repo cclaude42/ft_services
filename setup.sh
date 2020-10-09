@@ -42,7 +42,8 @@ footer()
 
 minikube_setup()
 {
-	echo -e $BLUE
+	echo "Configuring minikube..."
+	echo -en $BLUE
 	minikube delete
 	minikube start --driver=docker --cpus=2
 	minikube addons enable metrics-server
@@ -51,32 +52,39 @@ minikube_setup()
 	minikube addons enable metallb
 	kubectl apply -f srcs/yaml_metallb/metallb.yaml
 	eval $(minikube docker-env)
-	echo
+	echo -en $GREEN
+	echo "Minikube is ready !"
 }
 
 image_build()
 {
-	echo -e "${WHITE}Building $1 image...$YELLOW"
+	echo -en $WHITE
+	echo "Building $1 image..."
+	echo -en $YELLOW
 	docker build -t ${1}_alpine srcs/$1/. | grep "Step"
-	echo -e "${GREEN}Successfully built $1 image !\n"
+	echo -en $GREEN
+	echo "Successfully built $1 image !\n"
 }
 
 deployment_build()
 {
 	kubectl apply -f srcs/yaml_deployments/$1.yaml &> /dev/null
-	echo -e "${BLUE}Successfully deployed $1 !"
+	echo -en $BLUE
+	echo "Successfully deployed $1 !"
 }
 
 volume_build()
 {
 	kubectl apply -f srcs/yaml_volumes/$1.yaml &> /dev/null
-	echo -e "${RED}Successfully created $1 volume !"
+	echo -en $RED
+	echo "Successfully created $1 volume !"
 }
 
 service_build()
 {
 	kubectl apply -f srcs/yaml_services/$1.yaml &> /dev/null
-	echo -e "${PURPLE}Successfully exposed $1 !"
+	echo -en $BLUE
+	echo "Successfully exposed $1 !"
 }
 
 images()
@@ -132,7 +140,7 @@ main()
 	deployments
 	volumes
 	services
-	footers
+	footer
 }
 
 custom()
