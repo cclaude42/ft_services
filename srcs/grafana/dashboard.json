@@ -4556,6 +4556,16 @@
   "templating": {
     "list": [
       {
+          "hide": 0,
+          "label": "datasource",
+          "name": "DS_INFLUXDB",
+          "options": [],
+          "query": "influxdb",
+          "refresh": 1,
+          "regex": "",
+          "type": "datasource"
+      },
+      {
         "allFormat": "glob",
         "datasource": "${DS_INFLUXDB}",
         "hide": 0,
