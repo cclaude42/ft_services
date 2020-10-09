@@ -30,8 +30,9 @@ footer()
 {
 	echo -en $GREEN
 	echo "Everything is set up !"
-	echo
 	echo -e $WHITE
+	echo "==============================================================================================="
+	echo
 	echo "FT_SERVICES IS READY !"
 	echo "Go to 172.17.0.2 to try it."
 	echo -e $CYAN
