@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-COPY datasource.yaml dashboard.yaml telegraf.conf setup.sh ./
+COPY datasource.yaml dashboard.yaml dashboard.json telegraf.conf setup.sh ./
 
 # Install Grafana
 RUN apk update && \

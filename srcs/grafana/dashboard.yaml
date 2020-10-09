@@ -1,6 +1,11 @@
 apiVersion: 1
 
 providers:
-  - name: 'influxdb'
-    options:
-      path: .
+- name: 'InfluxDB'
+  orgId: 1
+  folder: ''
+  type: file
+  disableDeletion: true
+  editable: false
+  options:
+    path: /usr/share/grafana/conf/provisioning/dashboards
