@@ -29,7 +29,7 @@ spec:
             - 'pgrep telegraf && pgrep mysqld'
           initialDelaySeconds: 10
           periodSeconds: 5
-    volumes:
-    - name: mysql-storage
-      persistentVolumeClaim:
-        claimName: mysql-volume
+      volumes:
+      - name: mysql-storage
+        persistentVolumeClaim:
+          claimName: mysql-volume
