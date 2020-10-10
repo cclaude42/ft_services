@@ -38,12 +38,12 @@ footer()
 	echo -e $CYAN
 	kubectl get svc
 	echo -e $GREEN
-	echo "-------------------------------------------------------------------------------------------------"
-	echo "| Services      | SSH nginx     | Wordpress     | InfluxDB      | FTPS          | Grafana       |"
-	echo "|-----------------------------------------------------------------------------------------------|"
-	echo "| Login         | ssh_admin     | wp_admin      | graf_admin    | ftp_admin     | admin         |"
-	echo "| Password      | 0101          | 1010          | 10101         | 01010         | admin         |"
-	echo "-------------------------------------------------------------------------------------------------"
+	echo "-----------------------------------------------------------------------------------------------------------------"
+	echo "| Services      | SSH nginx     | PHPMyAdmin    | InfluxDB      | FTPS          | Wordpress     | Grafana       |"
+	echo "|---------------------------------------------------------------------------------------------------------------|"
+	echo "| Login         | ssh_admin     | wp_admin      | graf_admin    | ftp_admin     | cclaude       | admin         |"
+	echo "| Password      | 0101          | 1010          | 10101         | 01010         | cclaude1      | admin         |"
+	echo "-----------------------------------------------------------------------------------------------------------------"
 	echo -e $WHITE
 }
 
@@ -172,6 +172,9 @@ custom()
 		elif [ $i = svc ]
 		then
 			services
+		elif [ $i = login ]
+		then
+			footer
 		fi
 	done
 }
