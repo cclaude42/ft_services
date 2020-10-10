@@ -20,7 +20,7 @@ spec:
           name: idb-port
         volumeMounts:
         - name: influxdb-storage
-          mountPath: /var/lib/influxdb
+          mountPath: /root
         livenessProbe:
           exec:
             command:
