@@ -182,7 +182,7 @@ custom()
 	done
 }
 
-if [ $1 == "x" ]
+if [[ $1 == "x" ]]
 then
 	main $1
 elif [ $1 ]
