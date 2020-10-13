@@ -14,6 +14,7 @@ vm_setup()
 		echo "Setting docker user..."
 		touch ~/.vm_setup
 		echo "VM is set !"
+		echo "Run ./setup.sh again."
 		sudo usermod -aG docker user42 && newgrp docker
 	fi
 }

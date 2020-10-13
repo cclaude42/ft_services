@@ -140,7 +140,10 @@ services()
 
 main()
 {
-	./srcs/vm_setup.sh
+	if [ ! $1 ]
+	then
+		./srcs/vm_setup.sh
+	fi
 	banner
 	minikube_setup
 	images
@@ -179,7 +182,10 @@ custom()
 	done
 }
 
-if [ $1 ]
+if [ $1 == "x" ]
+then
+	main $1
+elif [ $1 ]
 then
 	custom $@
 else
