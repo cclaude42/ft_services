@@ -163,6 +163,10 @@ custom()
 			image_build $i
 			deployment_build $i
 			service_build $i
+		elif [ $i = vm ]
+		then
+			rm ~/.vm_setup
+			./srcs/vm_setup.sh
 		elif [ $i = minikube ]
 		then
 			minikube_setup
